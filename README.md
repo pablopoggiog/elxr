@@ -1,6 +1,6 @@
 # Elxr
 
-**Projecto correspondiente a segunda clase de capacitacion en Elixir (fallido por el momento, luego de ya dos dias de intentar -> frustrarme -> repetir )**
+**Proyecto correspondiente a segunda clase de capacitacion en Elixir (fallido por el momento, luego de ya dos dias de intentar -> frustrarme -> repetir )**
 
 ## Installation
 
@@ -17,7 +17,7 @@ end
 ## FizzBuzz
 Make a fizz_buzz module and write a function called fuzzle that takes three arguments. If the first two are zero, return “FizzBuzz”. If the first is zero, return “Fizz”. If the second is zero return “Buzz”. Otherwise return the third argument.
 
-```
+```elixir
   defmodule FizzBuzz do
     def fuzzle a, b, c do
         cond do
