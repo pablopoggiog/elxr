@@ -5,6 +5,8 @@
 
   You can choose to play it alone (against the pc), or with a partner in your same team.
 
+  The goal is to reach 3 points (at the moment, for dynamism), earning 1 point per each hand winned.
+
 ## Pre-requisites 📋
   Must have been installed Elixir.
 
@@ -33,8 +35,8 @@
 
   Example: 
 
-  $ mix test
-  $ Compiling 1 file (.ex)
+    $ mix test
+    $ Compiling 1 file (.ex)
     .....
 
     Finished in 0.1 seconds
@@ -234,6 +236,6 @@
     Gracias por jugar Truco
 
 ## Authors ✒️
-  Most of the base-work made by Mariano Vitale, "enhances" (with uglyer code) made by Pablo Poggio.
+  Most of the base-work made by Mariano Vitale, "enhancements" (with uglyer code) made by Pablo Poggio.
 
 Project full of things to enhance 🤓, is a first aproach to a full console-app in Elixir.
