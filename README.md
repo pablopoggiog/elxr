@@ -23,7 +23,7 @@
 
   There are 5 tests. First one checks that create_deck/1 creates a new deck, and returns it with the received list of players.
 
-  Second one, that shuffle/1 returns a different deck than wich receives (strictly, because what mattersof the order).
+  Second one, that shuffle/1 returns a different deck than wich receives (strictly, because what matters here is the order).
 
   The third one, checks that shuffle/1's result contains all the original cards. It's a "reforce" for the second test.
 
