@@ -3,7 +3,7 @@
 # Truco
   Truco is a game developed in Elixir, as a TP for a class.  
 
-  You'll 
+  You can choose to play it alone (against the pc), or with a partner in your same team.
 
 ## Pre-requisites 📋
   Must have been installed Elixir.
