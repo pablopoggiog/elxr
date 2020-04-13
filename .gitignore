@@ -24,3 +24,4 @@ app-*.tar
 
 # Where i'll save the environment variables
 .env
+
