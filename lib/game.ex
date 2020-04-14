@@ -16,22 +16,38 @@ defmodule Truco.Game do
     Asks for a name trough the terminal, then slice it for taking just the name without the defult breakline (\\n), and finally its first letter gets uppercased.
 
   """
-  
+
   def create_players do
     input = IO.gets("\nCuantas personas quieren ser en el equipo?\n")
-    {n, _}  = Integer.parse(input)
+    {n, _} = Integer.parse(input)
+
     case n do
-      1 -> 
+      1 ->
         name_1 = IO.gets("\nComo es tu nombre?\n")
         name_1_without_breakline = name_1 |> String.slice(0..-2) |> String.capitalize()
-        [%Team{players: [%Player{name: name_1_without_breakline}]}, %Team{players: [%Player{name: 'PC'}]}]
-      2 -> 
+
+        [
+          %Team{players: [%Player{name: name_1_without_breakline}]},
+          %Team{players: [%Player{name: 'PC'}]}
+        ]
+
+      2 ->
         name_1 = IO.gets("\nJugador 1! Como es tu nombre?\n")
         name_2 = IO.gets("\nJugador 2! Como es tu nombre?\n")
         name_1_without_breakline = name_1 |> String.slice(0..-2) |> String.capitalize()
         name_2_without_breakline = name_2 |> String.slice(0..-2) |> String.capitalize()
-        [%Team{players: [%Player{name: name_1_without_breakline}, %Player{name: name_2_without_breakline}]}, %Team{players: [%Player{name: "PC"}, %Player{name: "PC-2"}]}]
-      _ -> 
+
+        [
+          %Team{
+            players: [
+              %Player{name: name_1_without_breakline},
+              %Player{name: name_2_without_breakline}
+            ]
+          },
+          %Team{players: [%Player{name: "PC"}, %Player{name: "PC-2"}]}
+        ]
+
+      _ ->
         IO.puts("\nSe puede jugar con 2 o 4 jugadores, por favor ingresa uno de estos dos")
         create_players()
     end
@@ -105,28 +121,42 @@ defmodule Truco.Game do
     And here, the resulting shuffled deck is divided in chunks, and splitted between players.
 
   """
-  def deal([deck, [%Team{players: players_team_1} = team_1, %Team{players: players_team_2} = team_2]]) do
+  def deal([
+        deck,
+        [%Team{players: players_team_1} = team_1, %Team{players: players_team_2} = team_2]
+      ]) do
     case Enum.count(players_team_1) do
-      1 ->         
+      1 ->
         [player_1] = players_team_1
         [player_2] = players_team_2
 
         [cards_1, cards_2 | _res] =
           deck
-          |> Enum.chunk(3)      
-          
-    
-        [%Team{team_1 | players: [%Player{player_1 | cards: cards_1}]}, %Team{team_2 | players: [%Player{player_2 | cards: cards_2}]}]
+          |> Enum.chunk(3)
 
-      2 -> 
+        [
+          %Team{team_1 | players: [%Player{player_1 | cards: cards_1}]},
+          %Team{team_2 | players: [%Player{player_2 | cards: cards_2}]}
+        ]
+
+      2 ->
         [player_1, player_2] = players_team_1
         [player_3, player_4] = players_team_2
 
         [cards_1, cards_2, cards_3, cards_4 | _res] =
           deck
           |> Enum.chunk(3)
-    
-        [%Team{team_1 | players: [%Player{player_1 | cards: cards_1}, %Player{player_2 | cards: cards_2}]}, %Team{team_2 | players: [%Player{player_3 | cards: cards_3}, %Player{player_4 | cards: cards_4}]}]
+
+        [
+          %Team{
+            team_1
+            | players: [%Player{player_1 | cards: cards_1}, %Player{player_2 | cards: cards_2}]
+          },
+          %Team{
+            team_2
+            | players: [%Player{player_3 | cards: cards_3}, %Player{player_4 | cards: cards_4}]
+          }
+        ]
     end
   end
 end
