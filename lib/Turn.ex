@@ -16,7 +16,13 @@ defmodule Truco.Turn do
     [player_1 | _] = players_1
     %{cards: cards_1} = player_1    
     cond do       
-      cards_1 == [] and score_hand_1 > score_2 and score_1 == 2 -> 
+      cards_1 == [] and score_hand_1 == score_hand_2 -> 
+        IO.puts "--------------- Empate ---------------"
+        IO.puts "\nEl contador sigue #{score_1} a #{score_2}"
+        [%Team{team_1 | score_hand: 0}, %Team{team_2 | score_hand: 0}]
+        |> Truco.play
+      cards_1 == [] and score_hand_1 > score_hand_2 and score_1 == 2 -> 
+        IO.puts "\nEl contador quedo #{score_1 + 1} a #{score_2}!"
         IO.puts("\n-*-*-*-*-*-*-*- Felicitaciones, ganaste el juego! -*-*-*-*-*-*-*-") 
         again = IO.gets("\nQueres jugar de nuevo? (s/n)") 
         case again do
@@ -24,6 +30,7 @@ defmodule Truco.Turn do
           "n\n" -> IO.puts("\nGracias por jugar Truco")
         end    
       cards_1 == [] and score_hand_1 < score_hand_2 and score_2 == 2 -> 
+        IO.puts "\nEl contador quedo #{score_1} a #{score_2 + 1}!"
         IO.puts("\n-*-*-*-*-*-*-*- Sera la proxima...! -*-*-*-*-*-*-*-") 
         again = IO.gets("\nQueres jugar de nuevo? (s/n)") 
         case again do
@@ -32,18 +39,13 @@ defmodule Truco.Turn do
           end 
       cards_1 == [] and score_hand_1 > score_hand_2 -> 
         IO.puts "--------------- Gano Team 1 ---------------"
-        IO.puts "El contador va #{score_1 + 1} a #{score_2}"
-        [%Team{team_1 | score_hand: 0, score: score_1 + 1}, team_2]
+        IO.puts "\nEl contador va #{score_1 + 1} a #{score_2}"
+        [%Team{team_1 | score_hand: 0, score: score_1 + 1}, %Team{team_2 | score_hand: 0}]
         |> Truco.play
       cards_1 == [] and score_hand_1 < score_hand_2 -> 
         IO.puts "--------------- Gano Team 2 ---------------"
-        IO.puts "El contador va #{score_1} a #{score_2 + 1}"
-        [team_1, %Team{team_2 | score_hand: 0, score: score_2 + 1}]
-        |> Truco.play
-      cards_1 == [] -> 
-        IO.puts "--------------- Empate ---------------"
-        IO.puts "El contador sigue #{score_1} a #{score_2}"
-        teams
+        IO.puts "\nEl contador va #{score_1} a #{score_2 + 1}"
+        [%Team{team_1 | score_hand: 0}, %Team{team_2 | score_hand: 0, score: score_2 + 1}]
         |> Truco.play
       true ->
         teams
@@ -64,7 +66,7 @@ defmodule Truco.Turn do
     The first function will take the cases with 2 players, and the second one with 4 players.
   
     """
-  defp choose(
+  def choose(
     [%Team{players: [%Player{name: name_1, cards: cards_1} = player_1], score_hand: score_hand_1} = team_1,
     %Team{players: [%Player{cards: cards_2} = player_2], score_hand: score_hand_2} = team_2]) do
     IO.puts("\n#{name_1}, estas son tus cartas:")
@@ -102,7 +104,7 @@ defmodule Truco.Turn do
       end
   end
 
-  defp choose(
+  def choose(
       [%Team{players: [%Player{name: name_1, cards: cards_1} = player_1,
       %Player{name: name_2, cards: cards_2} = player_2], 
       score_hand: score_hand_1} = team_1,
@@ -111,7 +113,7 @@ defmodule Truco.Turn do
       score_hand: score_hand_2} = team_2]
     ) do
 
-    # Elije el player 1
+    # Chooses player 1
     IO.puts("\n#{name_1}, estas son tus cartas:")
 
     cards_1
@@ -124,7 +126,7 @@ defmodule Truco.Turn do
       cards_1
       |> Enum.at(card_number_player_1 - 1)
 
-    #  Elije el player 2
+    # Chooses player 2
     IO.puts("\n#{name_2}, estas son tus cartas:")
 
     cards_2
@@ -181,7 +183,7 @@ defmodule Truco.Turn do
     The first function will take the cases with 2 players, and the second one with 4 players.
   
     """
-  defp compare([
+  def compare([
     %Team{players: [%Player{card_selected: %Card{magic: magic_1}}]} = team_1,
     %Team{players: [%Player{card_selected: %Card{magic: magic_2}}]} = team_2
       ]) do
@@ -197,34 +199,29 @@ defmodule Truco.Turn do
     end
   end
 
-  defp compare([
+  def compare([
     %Team{players: [%Player{card_selected: %Card{magic: magic_1}},
       %Player{card_selected: %Card{magic: magic_2}}]} = team_1,
     %Team{players: [%Player{card_selected: %Card{magic: magic_3}},
       %Player{card_selected: %Card{magic: magic_4}}]} = team_2
       ]) do
 
-        magics = [magic_1, magic_2, magic_3, magic_4]
+        magics_1 = [magic_1, magic_2]
+        magics_2 = [magic_3, magic_4]
+
+        greater_1 = Enum.max(magics_1)
+        greater_2 = Enum.max(magics_2)
+
+        magics = [greater_1, greater_2]
         greater = Enum.max(magics)
-        # 
-        # 
-        # 
-        # 
-        # 
-        # TODO: AGREGAR CLAUSE POR SI HAY EMPATE DE MAGICS
-        # 
-        # 
-        # 
-        # 
+
         cond do
-          greater == magic_1 ->
-            {:win, [team_1, team_2]}
-          greater == magic_2 ->
-            {:win, [team_1, team_2]}
-          greater == magic_3 ->
-            {:loose, [team_1, team_2]}
-          greater == magic_4 ->
-            {:loose, [team_1, team_2]}
+          greater_1 == greater_2 -> 
+            {:tie, [team_1, team_2]}
+          Enum.member?(magics_1, greater) -> 
+              {:win, [team_1, team_2]}   
+          Enum.member?(magics_2, greater) ->
+              {:loose, [team_1, team_2]}
         end
   end
 
@@ -234,7 +231,7 @@ defmodule Truco.Turn do
     Will give advice of the winner and looser of the hand through the terminal, and sill wum the corresponding hand-point to the winner.
   
     """
-  defp win_or_loose(
+  def win_or_loose(
         {status, [%Team{score_hand: score_hand_1} = team_1, %Team{score_hand: score_hand_2} = team_2]}
       ) do
     case status do
@@ -258,7 +255,7 @@ defmodule Truco.Turn do
     The first function will take the cases with 2 players, and the second one with 4 players.
   
     """
-  defp check([
+  def check([
     %Team{players: [%Player{cards: cards_1, card_selected: %Card{name: card_name_1}} = player_1]} = team_1,
     %Team{players: [%Player{cards: cards_2, card_selected: %Card{name: card_name_2}} = player_2]} = team_2
       ]) do
@@ -278,8 +275,8 @@ defmodule Truco.Turn do
     |> play_hand
   end
 
-  # check para 4 players
-  defp check([
+  # check for 4 players
+  def check([
     %Team{players: [%Player{cards: cards_1, card_selected: %Card{name: card_name_1}} = player_1,
     %Player{cards: cards_2, card_selected: %Card{name: card_name_2}} = player_2]} = team_1,
     %Team{players: [%Player{cards: cards_3, card_selected: %Card{name: card_name_3}} = player_3,
