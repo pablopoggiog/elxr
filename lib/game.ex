@@ -32,16 +32,14 @@ defmodule Truco.Game do
         ]
 
       2 ->
-        name_1 = IO.gets("\nJugador 1! Como es tu nombre?\n")
-        name_2 = IO.gets("\nJugador 2! Como es tu nombre?\n")
-        name_1_without_breakline = name_1 |> String.slice(0..-2) |> String.capitalize()
-        name_2_without_breakline = name_2 |> String.slice(0..-2) |> String.capitalize()
+        name_1 = IO.gets("\nJugador 1! Como es tu nombre?\n") |> String.trim()
+        name_2 = IO.gets("\nJugador 2! Como es tu nombre?\n") |> String.trim()
 
         [
           %Team{
             players: [
-              %Player{name: name_1_without_breakline},
-              %Player{name: name_2_without_breakline}
+              %Player{name: name_1},
+              %Player{name: name_2}
             ]
           },
           %Team{players: [%Player{name: "PC"}, %Player{name: "PC-2"}]}

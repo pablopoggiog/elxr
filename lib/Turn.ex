@@ -12,14 +12,11 @@ defmodule Truco.Turn do
 
   """
 
-  def play_hand(
-    [
-      %Team{players: [%{cards: cards_1}| _]}, _
-    ] = teams
-  ) do
-    
+  def play_hand([%Team{players: [%{cards: cards_1} | _]}, _] = teams) do
     cond do
-      cards_1 == [] -> check_score(teams)
+      cards_1 == [] ->
+        teams |> check_score()
+
       true ->
         teams
         |> choose
@@ -27,21 +24,18 @@ defmodule Truco.Turn do
         |> win_or_loose
         |> check
     end
-end  
-  
+  end
+
   @doc """
 
   Here, the players will select their cards to play in the current hand.
   The first function will take the cases with 2 players, and the second one with 4 players.
 
   """
-  def check_score(
-    [
-      %Team{score_hand: score_hand_1, score: score_1} = team_1,
-      %Team{score_hand: score_hand_2, score: score_2} = team_2
-    ]
-  ) do
-
+  def check_score([
+        %Team{score_hand: score_hand_1, score: score_1} = team_1,
+        %Team{score_hand: score_hand_2, score: score_2} = team_2
+      ]) do
     cond do
       score_hand_1 == score_hand_2 ->
         IO.puts("--------------- Empate ---------------")
@@ -53,14 +47,11 @@ end
       score_hand_1 > score_hand_2 and score_1 == 2 ->
         IO.puts("\nEl contador quedo #{score_1 + 1} a #{score_2}!")
         IO.puts("\n-*-*-*-*-*-*-*- Felicitaciones, ganaste el juego! -*-*-*-*-*-*-*-")
-        again = IO.gets("\nQueres jugar de nuevo? (s/n)")
-        IO.puts(again)
-        trimmedAgain = String.trim(again)
-        IO.puts(trimmedAgain)
+        again = IO.gets("\nQueres jugar de nuevo? (s/n)") |> String.trim()
 
-        case trimmedAgain do
+        case again do
           "s" -> Truco.play()
-          "n" -> IO.puts("\nGracias por jugar Truco")
+          "n" -> "\nGracias por jugar Truco" |> IO.puts()
         end
 
       score_hand_1 < score_hand_2 and score_2 == 2 ->
@@ -87,7 +78,6 @@ end
         [%Team{team_1 | score_hand: 0}, %Team{team_2 | score_hand: 0, score: score_2 + 1}]
         |> Truco.play()
     end
-
   end
 
   @doc """
