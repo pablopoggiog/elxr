@@ -14,9 +14,10 @@ defmodule Phinx.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Phinx.PubSub},
       # Start the Endpoint (http/https)
-      PhinxWeb.Endpoint
+      PhinxWeb.Endpoint,
       # Start a worker by calling: Phinx.Worker.start_link(arg)
       # {Phinx.Worker, arg}
+      Phinx.Vault
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

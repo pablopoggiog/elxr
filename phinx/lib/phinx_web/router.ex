@@ -5,10 +5,6 @@ defmodule PhinxWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", PhinxWeb do
-    pipe_through :api
-  end
-
   # Enables LiveDashboard only for development
   #
   # If you want to use the LiveDashboard in production, you should put
@@ -16,12 +12,12 @@ defmodule PhinxWeb.Router do
   # If your application does not have an admins-only section yet,
   # you can use Plug.BasicAuth to set up some basic authentication
   # as long as you are also using SSL (which you should anyway).
-  if Mix.env() in [:dev, :test] do
-    import Phoenix.LiveDashboard.Router
+  # if Mix.env() in [:dev, :test] do
+  #   import Phoenix.LiveDashboard.RouterNo
 
-    scope "/" do
-      pipe_through [:fetch_session, :protect_from_forgery]
-      live_dashboard "/dashboard", metrics: PhinxWeb.Telemetry
-    end
+  scope "/api" do
+    pipe_through :api
+    resources "/users", PhinxWeb.UserController, except: [:new, :edit]
+    resources "/hack", PhinxWeb.HackController, only: [:show]
   end
 end
