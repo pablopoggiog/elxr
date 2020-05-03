@@ -3,6 +3,7 @@ defmodule PhinxWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug(Plug.Authenticating)
   end
 
   # Enables LiveDashboard only for development

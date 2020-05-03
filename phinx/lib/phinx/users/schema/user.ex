@@ -7,13 +7,14 @@ defmodule Phinx.Users.Schema.User do
     field :email, :string
     field :password, Phinx.Encrypted.Binary
     field :password_hash, Cloak.Ecto.SHA256
+    field :token, :string
 
     # timestamps()
   end
 
   def changeset(user, attrs) do
     user
-    |> cast(attrs, [:id, :name, :email])
+    |> cast(attrs, [:id, :name, :email, :token])
     |> validate_required([:name, :email])
     |> unique_constraint(:email)
     |> put_hashed_fields()

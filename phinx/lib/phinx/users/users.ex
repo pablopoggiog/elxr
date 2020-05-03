@@ -13,6 +13,13 @@ defmodule Phinx.Users do
       nil -> {:error, :not_found}
     end
   end
+  
+  def get_by_token(token) do
+    case user = Repo.get_by(User, token: token) do
+      %User{} -> {:ok, user}
+      nil -> {:error, :not_found}
+    end
+  end
 
   def create(attrs) do
     case %User{} |> User.changeset(attrs) |> Repo.insert() do
