@@ -1,13 +1,13 @@
-defmodule BlockchainWeb.BlocksController do
+defmodule BlockchainWeb.TransactionsController do
   use BlockchainWeb, :controller
   alias Blockchain.BlockchainApi
 
-  def index(conn, _params) do
-    # %{"blocks" => [%{"hash" => hash} | _]} = BlockchainApi.last_day_blocks
-    %{"blocks" => blocks} = BlockchainApi.last_day_blocks()
-    # render(conn, "index.html", hash: hash)
-    render(conn, "index.html", blocks: blocks)
-  end
+  # def index(conn, _params) do
+  #   # %{"blocks" => [%{"hash" => hash} | _]} = BlockchainApi.last_day_blocks
+  #   %{"blocks" => blocks} = BlockchainApi.get_tx_by_hash()
+  #   # render(conn, "index.html", hash: hash)
+  #   render(conn, "index.html", blocks: blocks)
+  # end
 
   def show(conn, %{"hash" => hash}) do
     # %{"blocks" => [%{"hash" => hash} | _]} = BlockchainApi.last_day_blocks
@@ -26,8 +26,8 @@ defmodule BlockchainWeb.BlocksController do
     # "weight": weight,
     # "tx": tx
     # }
-    block = BlockchainApi.get_block_by_hash(hash)
+    tx = BlockchainApi.get_tx_by_hash(hash)
     # render(conn, "index.html", hash: hash)
-    render(conn, "show.html", block: block)
+    render(conn, "show.html", tx: tx)
   end
 end

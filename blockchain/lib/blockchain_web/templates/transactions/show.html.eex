@@ -1,25 +1,38 @@
 <section class="phx-hero">
-    <h1><%= gettext "Mira mis blocks marideeeeeeeeeeeee!", name: "Phoenix" %></h1>
+    <h1><%= gettext "Mira mis @txs marideeeeeeeeeeeee!", name: "Phoenix" %></h1>
     <p>No entiendo un pingo we</p>
     <div>
-      <%# <%= @blocks %>
-      <%# <%= Enum.map @blocks, &(<li>&1["hash"]</li>) %>
       <table>
         <tr>
-          <th>Height</th>
-          <th>Hash</th>
-          <th>Time</th>
-          <th>Main chain</th>
+          <th>ver</th>
+          <th>weight</th>
+          <th>block_height</th>
+          <th>relayed_by</th>
+          <th>lock_time</th>
+          <th>size</th>
+          <th>block_index</th>
+          <th>time</th>
+          <th>tx_index</th>
+          <th>vin_sz</th>
+          <th>hash</th>
+          <th>vout_sz</th>
         </tr>
         
-        <%= for block <- @blocks do %>
-          <tr>
-            <td><%= block["height"] %></td>
-            <td><a href=<%= "http://localhost:4001/blocks/" <> block["hash"] %>><%= block["hash"] %></a></td>
-            <td><%= block["time"] %></td>
-            <td><%= block["main_chain"] %></td>
+        <tr>
+            <td><%= @tx["ver"] %></td>
+            <td><%= @tx["weight"] %></td>
+            <td><%= @tx["block_height"] %></td>
+            <td><%= @tx["relayed_by"] %></td>
+            <td><%= @tx["lock_time"] %></td>
+            <td><%= @tx["size"] %></td>
+            <td><%= @tx["block_index"] %></td>
+            <td><%= @tx["time"] %></td>
+            <td><%= @tx["tx_index"] %></td>
+            <td><%= @tx["vin_sz"] %></td>
+            <td><%= @tx["hash"] %></td>
+            <td><%= @tx["vout_sz"] %></td>
+            
           </tr>
-        <% end %>
 
       </table>
 

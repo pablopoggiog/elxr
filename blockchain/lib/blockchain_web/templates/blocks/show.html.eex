@@ -2,14 +2,13 @@
     <h1><%= gettext "Mira mis blocks marideeeeeeeeeeeee!", name: "Phoenix" %></h1>
     <p>No entiendo un pingo we</p>
     <div>
-      <%# <%= @blocks %>
-      <%# <%= Enum.map @blocks, &(<li>&1["hash"]</li>) %>
       <table>
         <tr>
           <th>ver</th>
+          <th>next_block</th>
           <th>time</th>
           <th>bits</th>
-          <th>free chain</th>
+          <th>fee</th>
           <th>nonce</th>
           <th>n_tx</th>
           <th>size</th>
@@ -17,26 +16,28 @@
           <th>main_chain</th>
           <th>height</th>
           <th>weight</th>
-          <th>tx</th>
+          <th>hash</th>
+          <th>prev_block</th>
+          <th>mrkl_root</th>
         </tr>
-        
-        <%= for prop <- @block do %>
-          <tr>
-            <td><%= block["ver"] %></td>
-            <td><%= block["time"] %></td>
-            <td><%= block["bits"] %></td>
-            <td><%= block["free"] %></td>
-            <td><%= block["nonce"] %></td>
-            <td><%= block["n_tx"] %></td>
-            <td><%= block["size"] %></td>
-            <td><%= block["block_index"] %></td>
-            <td><%= block["main_chain"] %></td>
-            <td><%= block["height"] %></td>
-            <td><%= block["weight"] %></td>
-            <td><%= block["tx"] %></td>
-            
-          </tr>
-        <% end %>
+                
+        <tr>
+            <td><%= @block["ver"] %></td>    
+            <td><%= @block["next_block"] %></td>    
+            <td><%= @block["time"] %></td>    
+            <td><%= @block["bits"] %></td>    
+            <td><%= @block["fee"] %></td>    
+            <td><%= @block["nonce"] %></td>    
+            <td><%= @block["n_tx"] %></td>    
+            <td><%= @block["size"] %></td>    
+            <td><%= @block["block_index"] %></td>    
+            <td><%= @block["main_chain"] %></td>    
+            <td><%= @block["height"] %></td>    
+            <td><%= @block["weight"] %></td>  
+            <td><%= @block["hash"] %></td> 
+            <td><%= @block["prev_block"] %></td> 
+            <td><%= @block["mrkl_root"] %></td>         
+        </tr>
 
       </table>
 

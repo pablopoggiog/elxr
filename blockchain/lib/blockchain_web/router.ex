@@ -19,10 +19,13 @@ defmodule BlockchainWeb.Router do
     get "/", PageController, :index
     get "/blocks/:hash", BlocksController, :show
     get "/blocks", BlocksController, :index
-    get "/transactions", TransactionsController, :index
-    get "/signup", AccountController, :create
+    get "/transactions/:hash", TransactionsController, :show
+    get "/signup", AccountController, :new
     get "/login", AccountController, :index
     get "/logout", AccountController, :index
+
+    # resources  "/users/:id", AccountController, only [:update]
+    resources "/users", AccountController
   end
 
   # Other scopes may use custom stacks.

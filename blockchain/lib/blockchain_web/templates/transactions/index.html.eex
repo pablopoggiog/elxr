@@ -5,21 +5,6 @@
       <%# <%= @blocks %>
       <%# <%= Enum.map @blocks, &(<li>&1["hash"]</li>) %>
       <table>
-        <tr>
-          <th>Height</th>
-          <th>Hash</th>
-          <th>Time</th>
-          <th>Main chain</th>
-        </tr>
-        
-        <%= for block <- @blocks do %>
-          <tr>
-            <td><%= block["height"] %></td>
-            <td><a href=<%= "http://localhost:4001/blocks/" <> block["hash"] %>><%= block["hash"] %></a></td>
-            <td><%= block["time"] %></td>
-            <td><%= block["main_chain"] %></td>
-          </tr>
-        <% end %>
 
       </table>
 

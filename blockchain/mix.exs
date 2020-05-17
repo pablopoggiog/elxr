@@ -47,7 +47,9 @@ defmodule Blockchain.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:poison, "~> 3.1"},
       {:httpoison, "~> 1.6"},
-      {:bitcoin, "~> 0.0.2"}
+      {:bitcoin, "~> 0.0.2"},
+      {:comeonin, "~> 5.3.1"},
+      {:bcrypt_elixir, "~> 2.0"}
     ]
   end
 

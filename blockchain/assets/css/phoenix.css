@@ -37,6 +37,7 @@ select {
   margin-bottom: 3rem;
   font-weight: 200;
   font-size: 120%;
+  overflow-x: scroll;
 }
 .phx-hero input {
   background: #ffffff;

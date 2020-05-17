@@ -4,6 +4,6 @@ defmodule BlockchainWeb.PageController do
 
   def index(conn, _params) do
     %{"blocks" => [%{"hash" => hash} | _]} = BlockchainApi.last_day_blocks()
-    render(conn, "index.html", blocks: hash)
+    render(conn, "index.html", hash: hash)
   end
 end
