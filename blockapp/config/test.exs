@@ -21,9 +21,7 @@ config :blockapp, BlockappWeb.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
-
-config :blockapp, BlockappWeb.Endpoint,
-  server: true
+config :blockapp, BlockappWeb.Endpoint, server: true
 
 config :blockapp, :sql_sandbox, true
 

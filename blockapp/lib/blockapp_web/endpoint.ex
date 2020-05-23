@@ -1,8 +1,9 @@
 defmodule BlockappWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :blockapp
-  
+
   if Application.get_env(:blockapp, :sql_sandbox),
     do: plug(Phoenix.Ecto.SQL.Sandbox)
+
   # ...
 
   # The session will be stored in the cookie and signed,
