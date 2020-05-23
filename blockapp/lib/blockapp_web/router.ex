@@ -8,13 +8,27 @@ defmodule BlockappWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
+  
+  pipeline :browser_auth do
+    plug Guardian.Plug.EnsureAuthenticated
+  end
+  
+  pipeline :guardian do
+    plug BlockappWeb.Authentication.Pipeline
+  end
 
   pipeline :api do
     plug :accepts, ["json"]
   end
 
   scope "/", BlockappWeb do
-    pipe_through :browser
+    pipe_through [:browser, :guardian, :browser_auth]
+
+    resources "/profile", ProfileController, only: [:show], singleton: true
+  end
+
+  scope "/", BlockappWeb do
+    pipe_through [:browser, :guardian]
 
     get "/", PageController, :index
     get "/register", RegistrationController, :new

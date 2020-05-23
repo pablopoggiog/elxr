@@ -11,7 +11,7 @@ defmodule Blockapp.Accounts.Account do
   end
 
   @doc false
-  def changeset(account, attrs) do
+  def changeset(account, params) do
     account
     |> cast(params, [:email, :password])
     |> validate_required([:email, :password])

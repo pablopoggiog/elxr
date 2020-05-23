@@ -1,17 +1,15 @@
 defmodule BlockappWeb.RegistrationController do
   use BlockappWeb, :controller
+  alias Blockapp.Accounts
 
-  def new(conn, _) do
-    render(conn, :new,
-      changeset: Accounts.change_account(),
-      action: Routes.registration_path(conn, :create)
-    )
-  end
+  alias BlockappWeb.Authentication
 
-  def create(%{assigns: %{ueberauth_auth: auth_params}} = conn, _params) do
-    case Accounts.register(auth_params) do
+  def create(conn, %{"account" => account_params}) do
+    case Accounts.register(account_params) do
       {:ok, account} ->
-        redirect(conn, to: Routes.profile_path(conn, :show))
+        conn
+        |> Authentication.log_in(account)
+        |> redirect(to: Routes.profile_path(conn, :show))
 
       {:error, changeset} ->
         render(conn, :new,
@@ -19,5 +17,12 @@ defmodule BlockappWeb.RegistrationController do
           action: Routes.registration_path(conn, :create)
         )
     end
+  end
+
+  def new(conn, _) do
+    render(conn, :new,
+      changeset: Accounts.change_account(),
+      action: Routes.registration_path(conn, :create)
+    )
   end
 end

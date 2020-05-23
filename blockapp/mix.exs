@@ -48,7 +48,8 @@ defmodule Blockapp.MixProject do
       {:wallaby, "~> 0.24.1", [runtime: false, only: :test]},
       {:ueberauth, "~> 0.6.3"},
       {:ueberauth_identity, "~> 0.3.0"},
-      {:argon2_elixir, "~> 2.3"}
+      {:argon2_elixir, "~> 2.3"},
+      {:guardian, "~> 2.1"}
     ]
   end
 

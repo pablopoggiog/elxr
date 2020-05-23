@@ -17,4 +17,8 @@ defmodule Blockapp.Accounts do
   def change_account(account \\ %Account{}) do
     Account.changeset(account, %{})
   end
+  
+  def get_account(id) do
+    Repo.get(Account, id)
+  end
 end
