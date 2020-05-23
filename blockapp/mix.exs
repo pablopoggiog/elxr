@@ -45,7 +45,10 @@ defmodule Blockapp.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:wallaby, "~> 0.23.0", [runtime: false, only: :test]}
+      {:wallaby, "~> 0.24.1", [runtime: false, only: :test]},
+      {:ueberauth, "~> 0.6.3"},
+      {:ueberauth_identity, "~> 0.3.0"},
+      {:argon2_elixir, "~> 2.3"}
     ]
   end
 
