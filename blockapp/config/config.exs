@@ -38,7 +38,7 @@ config :ueberauth, Ueberauth,
        ]}
   ]
 
-  config :yauth, BlockappWeb.Authentication,
+config :blockapp, BlockappWeb.Authentication,
   issuer: "blockapp",
   secret_key: System.get_env("pA5GSsA/EQ1OaeZKOTgp4LNxprqMlpezxJKODQmsFcgh5wv245GH3Y4cB9N5fx8J")
 

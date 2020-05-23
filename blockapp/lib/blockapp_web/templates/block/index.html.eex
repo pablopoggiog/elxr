@@ -1,0 +1,62 @@
+<section class="phx-hero">
+    <h1><%= gettext "Mira mis blocks marideeeeeeeeeeeee!", name: "Phoenix" %></h1>
+    <p>No entiendo un pingo we</p>
+    <div>
+      <%# <%= @blocks %>
+      <%# <%= Enum.map @blocks, &(<li>&1["hash"]</li>) %>
+      <table>
+        <tr>
+          <th>Height</th>
+          <th>Hash</th>
+          <th>Time</th>
+          <th>Main chain</th>
+        </tr>
+        
+        <%= for block <- @blocks do %>
+          <tr>
+            <td><%= block["height"] %></td>
+            <td><a href=<%= "http://localhost:4001/blocks/" <> block["hash"] %>><%= block["hash"] %></a></td>
+            <td><%= block["time"] %></td>
+            <td><%= block["main_chain"] %></td>
+          </tr>
+        <% end %>
+
+      </table>
+
+    </div>
+  </section>
+  
+  <section class="row">
+    <article class="column">
+      <h2>Resources</h2>
+      <ul>
+        <li>
+          <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
+        </li>
+        <li>
+          <a href="https://github.com/phoenixframework/phoenix">Source</a>
+        </li>
+        <li>
+          <a href="https://github.com/phoenixframework/phoenix/blob/v1.5/CHANGELOG.md">v1.5 Changelog</a>
+        </li>
+      </ul>
+    </article>
+    <article class="column">
+      <h2>Help</h2>
+      <ul>
+        <li>
+          <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
+        </li>
+        <li>
+          <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
+        </li>
+        <li>
+          <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
+        </li>
+        <li>
+          <a href="https://elixir-slackin.herokuapp.com/">Elixir on Slack</a>
+        </li>
+      </ul>
+    </article>
+  </section>
+  

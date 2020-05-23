@@ -8,11 +8,11 @@ defmodule BlockappWeb.Router do
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
-  
+
   pipeline :browser_auth do
     plug Guardian.Plug.EnsureAuthenticated
   end
-  
+
   pipeline :guardian do
     plug BlockappWeb.Authentication.Pipeline
   end
@@ -25,6 +25,9 @@ defmodule BlockappWeb.Router do
     pipe_through [:browser, :guardian, :browser_auth]
 
     resources "/profile", ProfileController, only: [:show], singleton: true
+    get "/blocks/:hash", BlockController, :show
+    get "/blocks", BlockController, :index
+    get "/transactions/:hash", TransactionController, :show
   end
 
   scope "/", BlockappWeb do
@@ -34,6 +37,7 @@ defmodule BlockappWeb.Router do
     get "/register", RegistrationController, :new
     post "/register", RegistrationController, :create
     get "/login", SessionController, :new
+    post "/login", SessionController, :create
   end
 
   # Other scopes may use custom stacks.

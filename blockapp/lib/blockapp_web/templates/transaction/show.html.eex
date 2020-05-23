@@ -1,0 +1,75 @@
+<section class="phx-hero">
+    <h1><%= gettext "Mira mis @txs marideeeeeeeeeeeee!", name: "Phoenix" %></h1>
+    <p>No entiendo un pingo we</p>
+    <div>
+      <table>
+        <tr>
+          <th>ver</th>
+          <th>weight</th>
+          <th>block_height</th>
+          <th>relayed_by</th>
+          <th>lock_time</th>
+          <th>size</th>
+          <th>block_index</th>
+          <th>time</th>
+          <th>tx_index</th>
+          <th>vin_sz</th>
+          <th>hash</th>
+          <th>vout_sz</th>
+        </tr>
+        
+        <tr>
+            <td><%= @tx["ver"] %></td>
+            <td><%= @tx["weight"] %></td>
+            <td><%= @tx["block_height"] %></td>
+            <td><%= @tx["relayed_by"] %></td>
+            <td><%= @tx["lock_time"] %></td>
+            <td><%= @tx["size"] %></td>
+            <td><%= @tx["block_index"] %></td>
+            <td><%= @tx["time"] %></td>
+            <td><%= @tx["tx_index"] %></td>
+            <td><%= @tx["vin_sz"] %></td>
+            <td><%= @tx["hash"] %></td>
+            <td><%= @tx["vout_sz"] %></td>
+            
+          </tr>
+
+      </table>
+
+    </div>
+  </section>
+  
+  <section class="row">
+    <article class="column">
+      <h2>Resources</h2>
+      <ul>
+        <li>
+          <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
+        </li>
+        <li>
+          <a href="https://github.com/phoenixframework/phoenix">Source</a>
+        </li>
+        <li>
+          <a href="https://github.com/phoenixframework/phoenix/blob/v1.5/CHANGELOG.md">v1.5 Changelog</a>
+        </li>
+      </ul>
+    </article>
+    <article class="column">
+      <h2>Help</h2>
+      <ul>
+        <li>
+          <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
+        </li>
+        <li>
+          <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
+        </li>
+        <li>
+          <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
+        </li>
+        <li>
+          <a href="https://elixir-slackin.herokuapp.com/">Elixir on Slack</a>
+        </li>
+      </ul>
+    </article>
+  </section>
+  

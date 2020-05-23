@@ -1,0 +1,80 @@
+<section class="phx-hero">
+    <h1><%= gettext "Mira mis blocks marideeeeeeeeeeeee!", name: "Phoenix" %></h1>
+    <p>No entiendo un pingo we</p>
+    <div>
+      <table>
+        <tr>
+          <th>ver</th>
+          <th>next_block</th>
+          <th>time</th>
+          <th>bits</th>
+          <th>fee</th>
+          <th>nonce</th>
+          <th>n_tx</th>
+          <th>size</th>
+          <th>block_index</th>
+          <th>main_chain</th>
+          <th>height</th>
+          <th>weight</th>
+          <th>hash</th>
+          <th>prev_block</th>
+          <th>mrkl_root</th>
+        </tr>
+                
+        <tr>
+            <td><%= @block["ver"] %></td>    
+            <td><%= @block["next_block"] %></td>    
+            <td><%= @block["time"] %></td>    
+            <td><%= @block["bits"] %></td>    
+            <td><%= @block["fee"] %></td>    
+            <td><%= @block["nonce"] %></td>    
+            <td><%= @block["n_tx"] %></td>    
+            <td><%= @block["size"] %></td>    
+            <td><%= @block["block_index"] %></td>    
+            <td><%= @block["main_chain"] %></td>    
+            <td><%= @block["height"] %></td>    
+            <td><%= @block["weight"] %></td>  
+            <td><%= @block["hash"] %></td> 
+            <td><%= @block["prev_block"] %></td> 
+            <td><%= @block["mrkl_root"] %></td>         
+        </tr>
+
+      </table>
+
+    </div>
+  </section>
+  
+  <section class="row">
+    <article class="column">
+      <h2>Resources</h2>
+      <ul>
+        <li>
+          <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
+        </li>
+        <li>
+          <a href="https://github.com/phoenixframework/phoenix">Source</a>
+        </li>
+        <li>
+          <a href="https://github.com/phoenixframework/phoenix/blob/v1.5/CHANGELOG.md">v1.5 Changelog</a>
+        </li>
+      </ul>
+    </article>
+    <article class="column">
+      <h2>Help</h2>
+      <ul>
+        <li>
+          <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
+        </li>
+        <li>
+          <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
+        </li>
+        <li>
+          <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
+        </li>
+        <li>
+          <a href="https://elixir-slackin.herokuapp.com/">Elixir on Slack</a>
+        </li>
+      </ul>
+    </article>
+  </section>
+  
