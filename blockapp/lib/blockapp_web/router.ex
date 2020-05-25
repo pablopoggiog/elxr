@@ -24,10 +24,11 @@ defmodule BlockappWeb.Router do
   scope "/", BlockappWeb do
     pipe_through [:browser, :guardian, :browser_auth]
 
-    resources "/profile", ProfileController, only: [:show], singleton: true
+    # resources "/profile", ProfileController, only: [:show], singleton: true
     get "/blocks/:hash", BlockController, :show
     get "/blocks", BlockController, :index
     get "/transactions/:hash", TransactionController, :show
+    delete "/logout", SessionController, :delete
   end
 
   scope "/", BlockappWeb do

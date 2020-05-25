@@ -1,6 +1,11 @@
 <section class="phx-hero">
-    <h1><%= gettext "Mira mis blocks marideeeeeeeeeeeee!", name: "Phoenix" %></h1>
-    <p>No entiendo un pingo we</p>
+  <%= link(
+    "Back to home",
+     to: Routes.page_path(@conn, :index),
+     method: :get
+  ) %>
+    <h1><%= gettext "Blocks of the day" %></h1>
+    <p> <%= @current_account %> </p>
     <div>
       <%# <%= @blocks %>
       <%# <%= Enum.map @blocks, &(<li>&1["hash"]</li>) %>
@@ -15,7 +20,7 @@
         <%= for block <- @blocks do %>
           <tr>
             <td><%= block["height"] %></td>
-            <td><a href=<%= "http://localhost:4001/blocks/" <> block["hash"] %>><%= block["hash"] %></a></td>
+            <td><a href=<%= "http://localhost:4000/blocks/" <> block["hash"] %>><%= block["hash"] %></a></td>
             <td><%= block["time"] %></td>
             <td><%= block["main_chain"] %></td>
           </tr>

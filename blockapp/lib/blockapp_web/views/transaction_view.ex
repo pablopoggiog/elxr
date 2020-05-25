@@ -1,4 +1,3 @@
 defmodule BlockappWeb.TransactionView do
-    use BlockappWeb, :view
-  end
-  
+  use BlockappWeb, :view
+end

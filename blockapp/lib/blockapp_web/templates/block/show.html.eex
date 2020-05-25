@@ -1,6 +1,4 @@
 <section class="phx-hero">
-    <h1><%= gettext "Mira mis blocks marideeeeeeeeeeeee!", name: "Phoenix" %></h1>
-    <p>No entiendo un pingo we</p>
     <div>
       <table>
         <tr>

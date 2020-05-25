@@ -1,4 +1,3 @@
 defmodule BlockappWeb.BlockView do
-    use BlockappWeb, :view
-  end
-  
+  use BlockappWeb, :view
+end

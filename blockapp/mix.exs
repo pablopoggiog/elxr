@@ -49,10 +49,10 @@ defmodule Blockapp.MixProject do
       {:ueberauth, "~> 0.6.3"},
       {:ueberauth_identity, "~> 0.3.0"},
       {:argon2_elixir, "~> 2.3"},
-      {:guardian, "~> 2.1"},      
+      {:guardian, "~> 2.1"},
       {:poison, "~> 3.1"},
       {:httpoison, "~> 1.6"},
-      {:bitcoin, "~> 0.0.2"},
+      {:bitcoin, "~> 0.0.2"}
     ]
   end
 

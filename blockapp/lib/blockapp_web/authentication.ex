@@ -2,7 +2,7 @@ defmodule BlockappWeb.Authentication do
   @moduledoc """
   Implementation module for Guardian and functions for authentication.
   """
-  use Guardian, otp_app: :Blockapp
+  use Guardian, otp_app: :blockapp
   alias Blockapp.{Accounts, Accounts.Account}
 
   def subject_for_token(resource, _claims) do
@@ -17,13 +17,14 @@ defmodule BlockappWeb.Authentication do
   end
 
   def log_in(conn, account) do
+    # IO.inspect __MODULE__.Plug.sign_in(conn, account)
     __MODULE__.Plug.sign_in(conn, account)
   end
-  
+
   def get_current_account(conn) do
     __MODULE__.Plug.current_resource(conn)
   end
-  
+
   def authenticate(%Account{} = account, password) do
     authenticate(
       account,
@@ -42,5 +43,9 @@ defmodule BlockappWeb.Authentication do
 
   defp authenticate(_account, _password, false) do
     {:error, :invalid_credentials}
+  end
+  
+  def log_out(conn) do
+    __MODULE__.Plug.sign_out(conn)
   end
 end

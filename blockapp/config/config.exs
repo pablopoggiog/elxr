@@ -40,7 +40,7 @@ config :ueberauth, Ueberauth,
 
 config :blockapp, BlockappWeb.Authentication,
   issuer: "blockapp",
-  secret_key: System.get_env("pA5GSsA/EQ1OaeZKOTgp4LNxprqMlpezxJKODQmsFcgh5wv245GH3Y4cB9N5fx8J")
+  secret_key: "pA5GSsA/EQ1OaeZKOTgp4LNxprqMlpezxJKODQmsFcgh5wv245GH3Y4cB9N5fx8J"
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
